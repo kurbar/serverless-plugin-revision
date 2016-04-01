@@ -1,0 +1,34 @@
+{
+  "name": "serverless-plugin-revision",
+  "version": "0.2.0",
+  "engines": {
+    "node": ">=4.0"
+  },
+  "description": "Revisioning plugin for Serverless. Adds a Revision header with the version from root package.json and latest git short commit hash",
+  "author": "Karl Viiburg <karl@viiburg.ee>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DHNCarlos/serverless-plugin-revision"
+  },
+  "keywords": [
+    "serverless plugin versioning",
+    "serverless plugin revision",
+    "serverless plugins"
+  ],
+  "main": "index.js",
+  "bin": {},
+  "scripts": {
+    "test": "mocha tests/all"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "app-root-path": "^1.0.0",
+    "bluebird": "^3.0.6",
+    "git-rev": "^0.2.1",
+    "lodash": "^3.5.0"
+  }
+}
