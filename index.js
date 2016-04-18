@@ -43,7 +43,7 @@ module.exports = function(S) { // Always pass in the ServerlessPlugin Class
     registerHooks() {
       SCli.log("Registering hooks");
 
-      this.S.addHook(this._addRevisionHeader.bind(this), {
+      S.addHook(this._addRevisionHeader.bind(this), {
         action: 'endpointBuildApiGateway',
         event:  'pre'
       });
@@ -60,8 +60,8 @@ module.exports = function(S) { // Always pass in the ServerlessPlugin Class
       SCli.log("_addRevisionHeader");
 
       var packageJsonVersion = this.getPackageJsonVersion(),
-          endpoint = this.S.state.getEndpoints({paths: [evt.options.path]})[0],
-          populatedEndpoint = endpoint.getPopulated({
+          endpoint = S.getProject().getEndpoint(evt.options.name),
+          populatedEndpoint = endpoint.toObjectPopulated({
             stage: evt.options.stage,
             region: evt.options.region
           });
