@@ -77,7 +77,7 @@ module.exports = function(S) { // Always pass in the ServerlessPlugin Class
             response.responseParameters['method.response.header.API-Revision'] = '\'' + packageJsonVersion + '-' + lastCommitHash + '\'';
           });
 
-          endpoint.set(populatedEndpoint);
+          endpoint.fromObject(populatedEndpoint);
 
           resolve();
         });
