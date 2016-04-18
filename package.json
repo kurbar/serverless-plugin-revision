@@ -1,6 +1,6 @@
 {
   "name": "serverless-plugin-revision",
-  "version": "0.2.2",
+  "version": "0.5.1",
   "engines": {
     "node": ">=4.0"
   },

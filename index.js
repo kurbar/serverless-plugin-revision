@@ -5,7 +5,7 @@
  * Karl Viiburg <karl@viiburg.ee> 2016
  */
 
-module.exports = function(ServerlessPlugin, serverlessPath) { // Always pass in the ServerlessPlugin Class
+module.exports = function(S) { // Always pass in the ServerlessPlugin Class
 
   const _       = require('lodash'),
       path      = require('path'),
@@ -13,22 +13,22 @@ module.exports = function(ServerlessPlugin, serverlessPath) { // Always pass in 
       pJson     = require(appPath + '/package.json'),
       fs        = require('fs'),
       git       = require('git-rev'),
-      SCli      = require(path.join(serverlessPath, 'utils/cli')),
+      SCli      = require(S.getServerlessPath, 'utils/cli')),
       BbPromise = require('bluebird'); // Serverless uses Bluebird Promises and we recommend you do to because they provide more than your average Promise :)
 
   /**
    * ServerlessPluginRevision
    */
 
-  class ServerlessPluginRevision extends ServerlessPlugin {
+  class ServerlessPluginRevision extends S.classes.Plugin {
 
     /**
      * Constructor
      * - Keep this and don't touch it unless you know what you're doing.
      */
 
-    constructor(S) {
-      super(S);
+    constructor() {
+      super();
     }
 
     /**
