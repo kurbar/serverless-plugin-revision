@@ -13,7 +13,7 @@ module.exports = function(S) { // Always pass in the ServerlessPlugin Class
       pJson     = require(appPath + '/package.json'),
       fs        = require('fs'),
       git       = require('git-rev'),
-      SCli      = require(S.getServerlessPath, 'utils/cli')),
+      SCli      = require(S.getServerlessPath('utils/cli')),
       BbPromise = require('bluebird'); // Serverless uses Bluebird Promises and we recommend you do to because they provide more than your average Promise :)
 
   /**
