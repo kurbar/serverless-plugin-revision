@@ -5,6 +5,13 @@ Applies an `API-Revision` header to API Gateway responses that consists of the p
 
 ###Installation
 
+Depending on your Serverless version, install one of the following versions
+
+| Serverless Version | Plugin Version |
+|--------------------|----------------|
+| 0.4                | 0.2.*          |
+| 0.5                | 0.5.*          |
+
 Install the plugin in the root of your project:
 ```
 npm install serverless-plugin-revision
