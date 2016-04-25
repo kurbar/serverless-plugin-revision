@@ -13,8 +13,7 @@ module.exports = function(S) { // Always pass in the ServerlessPlugin Class
       pJson     = require(appPath + '/package.json'),
       fs        = require('fs'),
       git       = require('git-rev'),
-      SCli      = require(S.getServerlessPath('utils/cli')),
-      BbPromise = require('bluebird'); // Serverless uses Bluebird Promises and we recommend you do to because they provide more than your average Promise :)
+      Promise = require('bluebird'); // Serverless uses Bluebird Promises and we recommend you do to because they provide more than your average Promise :)
 
   /**
    * ServerlessPluginRevision
@@ -41,24 +40,19 @@ module.exports = function(S) { // Always pass in the ServerlessPlugin Class
     }
 
     registerHooks() {
-      SCli.log("Registering hooks");
-
       S.addHook(this._addRevisionHeader.bind(this), {
         action: 'endpointBuildApiGateway',
         event:  'pre'
       });
 
-      return BbPromise.resolve();
+      return Promise.resolve();
     }
 
-    getPackageJsonVersion() {
-      SCli.log("_getPackageJsonVersion");
+    static getPackageJsonVersion() {
       return pJson.version;
     }
 
     _addRevisionHeader(evt) {
-      SCli.log("_addRevisionHeader");
-
       var packageJsonVersion = this.getPackageJsonVersion(),
           endpoint = S.getProject().getEndpoint(evt.options.name),
           populatedEndpoint = endpoint.toObjectPopulated({
@@ -73,7 +67,6 @@ module.exports = function(S) { // Always pass in the ServerlessPlugin Class
               response.responseParameters = {};
             }
 
-            SCli.log(lastCommitHash);
             response.responseParameters['method.response.header.API-Revision'] = '\'' + packageJsonVersion + '-' + lastCommitHash + '\'';
           });
 
