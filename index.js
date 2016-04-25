@@ -48,7 +48,7 @@ module.exports = function(S) { // Always pass in the ServerlessPlugin Class
       return Promise.resolve();
     }
 
-    static getPackageJsonVersion() {
+    getPackageJsonVersion() {
       return pJson.version;
     }
 
